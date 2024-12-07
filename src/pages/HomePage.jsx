@@ -1,15 +1,7 @@
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
-
 const HomePage = () => {
-  const { logout } = useContext(AuthContext);
-
   return (
-    <div>
+    <div className="min-h-screen bg-white shadow-sm rounded-md p-5">
       <h1>Home</h1>
-      <button onClick={logout} className="btn">
-        Logout
-      </button>
     </div>
   );
 };

@@ -1,7 +1,15 @@
 import { useContext } from "react";
-import { Outlet } from "react-router-dom";
+import { IoClose } from "react-icons/io5";
 import { AuthContext } from "../providers/AuthProvider";
 import LoadingLayout from "./LoadingLayout";
+import Navbar from "../components/Navbar";
+import { NavLink, Outlet } from "react-router-dom";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
+import { FiBox, FiUser, FiShoppingCart, FiPieChart } from "react-icons/fi";
+import { BsBoxes } from "react-icons/bs";
+import { FaRegFileAlt } from "react-icons/fa";
+import { LuImage } from "react-icons/lu";
 
 const RootLayout = () => {
   const { loading } = useContext(AuthContext);
@@ -10,8 +18,196 @@ const RootLayout = () => {
   }
 
   return (
-    <div>
-      <Outlet></Outlet>
+    <div className="font-interFont">
+      <div className="drawer lg:drawer-open">
+        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content ">
+          {/* Page content here */}
+
+          <Navbar></Navbar>
+
+          <section className="bg-[#eff4f8] p-5">
+            <Outlet></Outlet>
+          </section>
+        </div>
+        <div className="drawer-side">
+          <label
+            htmlFor="my-drawer-2"
+            aria-label="close sidebar"
+            className="drawer-overlay"
+          ></label>
+          <ul className="menu bg-white text-base-content min-h-full w-80 p-4 overflow-hidden">
+            {/* Sidebar content here */}
+
+            <div className="flex justify-between items-center mt-1">
+              <h1 className="font-tekoFont text-3xl">Black Pearl</h1>
+              <label
+                htmlFor="my-drawer-2"
+                className="border hover:border-blue-500 cursor-pointer rounded lg:hidden hover:text-blue-500 p-2  duration-300"
+              >
+                <IoClose className="text-xl " />
+              </label>
+            </div>
+
+            <hr className="my-4 -mx-4" />
+
+            <div>
+              <h2 className="uppercase font-semibold text-gray-400 text-xs mb-3">
+                All Pages
+              </h2>
+
+              <div>
+                {/* Dashboard */}
+                <div className="collapse collapse-arrow rounded-none ">
+                  <input
+                    type="radio"
+                    name="my-accordion-2"
+                    className="peer"
+                    defaultChecked
+                  />
+                  <div className=" collapse-title peer-checked:border-none border border-gray-100 flex rounded-md items-center gap-3 peer-checked:bg-blue-100 peer-checked:text-blue-500 mb-2">
+                    <MdOutlineSpaceDashboard className="text-xl " />
+                    <h2 className="font-semibold text-base ">Dashboard</h2>
+                  </div>
+                  <div className="collapse-content flex flex-col ">
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Home 01</h1>
+                    </NavLink>
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Home 01</h1>
+                    </NavLink>
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Home 01</h1>
+                    </NavLink>
+                  </div>
+                </div>
+
+                {/* E-commerce */}
+                <div className="collapse collapse-arrow rounded-none ">
+                  <input type="radio" name="my-accordion-2" className="peer" />
+                  <div className=" collapse-title peer-checked:border-none border border-gray-100 flex rounded-md items-center gap-3 peer-checked:bg-blue-100 peer-checked:text-blue-500 mb-2">
+                    <FiShoppingCart className="text-xl " />
+                    <h2 className="font-semibold text-base ">Ecommerce</h2>
+                  </div>
+                  <div className="collapse-content flex flex-col ">
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Add Product</h1>
+                    </NavLink>
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Product List</h1>
+                    </NavLink>
+                  </div>
+                </div>
+
+                {/* Category */}
+                <div className="collapse collapse-arrow rounded-none ">
+                  <input type="radio" name="my-accordion-2" className="peer" />
+                  <div className=" collapse-title peer-checked:border-none border border-gray-100 flex rounded-md items-center gap-3 peer-checked:bg-blue-100 peer-checked:text-blue-500 mb-2">
+                    <FiBox className="text-xl " />
+                    <h2 className="font-semibold text-base ">Category</h2>
+                  </div>
+                  <div className="collapse-content flex flex-col ">
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Add Category</h1>
+                    </NavLink>
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Category List</h1>
+                    </NavLink>
+                  </div>
+                </div>
+
+                {/* Attributes */}
+                <div className="collapse collapse-arrow rounded-none ">
+                  <input type="radio" name="my-accordion-2" className="peer" />
+                  <div className=" collapse-title peer-checked:border-none border border-gray-100 flex rounded-md items-center gap-3 peer-checked:bg-blue-100 peer-checked:text-blue-500 mb-2">
+                    <BsBoxes className="text-xl " />
+                    <h2 className="font-semibold text-base ">Attributes</h2>
+                  </div>
+                  <div className="collapse-content flex flex-col ">
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Add Category</h1>
+                    </NavLink>
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Category List</h1>
+                    </NavLink>
+                  </div>
+                </div>
+
+                {/* Order */}
+                <div className="collapse collapse-arrow rounded-none ">
+                  <input type="radio" name="my-accordion-2" className="peer" />
+                  <div className=" collapse-title peer-checked:border-none border border-gray-100 flex rounded-md items-center gap-3 peer-checked:bg-blue-100 peer-checked:text-blue-500 mb-2">
+                    <FaRegFileAlt className="text-xl " />
+                    <h2 className="font-semibold text-base ">Order</h2>
+                  </div>
+                  <div className="collapse-content flex flex-col ">
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Order List</h1>
+                    </NavLink>
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Order Tracking</h1>
+                    </NavLink>
+                  </div>
+                </div>
+
+                {/* User */}
+                <div className="collapse collapse-arrow rounded-none ">
+                  <input type="radio" name="my-accordion-2" className="peer" />
+                  <div className=" collapse-title peer-checked:border-none border border-gray-100 flex rounded-md items-center gap-3 peer-checked:bg-blue-100 peer-checked:text-blue-500 mb-2">
+                    <FiUser className="text-xl " />
+                    <h2 className="font-semibold text-base ">User</h2>
+                  </div>
+                  <div className="collapse-content flex flex-col ">
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>All User</h1>
+                    </NavLink>
+                  </div>
+                </div>
+
+                {/* Gallery */}
+                <div className="collapse collapse-arrow rounded-none ">
+                  <input type="radio" name="my-accordion-2" className="peer" />
+                  <div className=" collapse-title peer-checked:border-none border border-gray-100 flex rounded-md items-center gap-3 peer-checked:bg-blue-100 peer-checked:text-blue-500 mb-2">
+                    <LuImage className="text-xl " />
+                    <h2 className="font-semibold text-base ">Gallery</h2>
+                  </div>
+                  <div className="collapse-content flex flex-col ">
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Add Photo</h1>
+                    </NavLink>
+                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                      <VscDebugBreakpointLogUnverified />
+                      <h1>Order Tracking</h1>
+                    </NavLink>
+                  </div>
+                </div>
+
+                {/* Report */}
+                <div className="collapse  rounded-none ">
+                  <input type="radio" name="my-accordion-2" className="peer" />
+                  <div className=" collapse-title peer-checked:border-none border border-gray-100 flex rounded-md items-center gap-3 peer-checked:bg-blue-100 peer-checked:text-blue-500 mb-2">
+                    <FiPieChart className="text-xl " />
+                    <h2 className="font-semibold text-base ">Report</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
