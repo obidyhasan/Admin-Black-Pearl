@@ -34,7 +34,7 @@ const LoginPage = () => {
     loginWithEmailAndPassword(email, password)
       .then(() => {
         showToast("Success", "success", "Black Pearl Login Successfully");
-
+        setLoading(false);
         navigate("/");
       })
       .catch(() => {
@@ -44,46 +44,56 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-login-bg bg-cover bg-center bg-no-repeat flex items-center justify-center font-interFont relative px-5">
-      <div className="card w-full max-w-md glass-effect">
-        <div className="text-center mt-10">
-          <h1 className="font-tekoFont text-4xl">Black Pearl</h1>
-          <h2 className="text-md text-white max-w-80 mx-auto mt-2 px-6">
-            Explore Your Admin Panel & Grow Your Business
-          </h2>
-        </div>
+    <div className="w-full min-h-screen grid grid-cols-1 md:grid-cols-2">
+      <div className="w-full h-full bg-[#ffedb1] flex items-center justify-center">
+        <img
+          src="https://i.ibb.co.com/6y2J87S/12143602-4905058.jpg"
+          className="w-full max-h-screen object-contain"
+          alt=""
+        />
+      </div>
 
-        <form onSubmit={handelOnSubmit} className="card-body">
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text text-lg">Email</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder="email"
-              className="input "
-              required
-            />
+      <div className="bg-[#fffcef] flex justify-center items-center">
+        <div className="w-full max-w-lg">
+          <div className="text-center mt-10">
+            <h1 className="font-tekoFont text-4xl md:text-6xl">Black Pearl</h1>
+            <h2 className="text-md mt-2 px-10 text-center">
+              Explore Your Admin Panel & Glow Your Business
+            </h2>
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text  text-lg">Password</span>
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              className="input "
-              required
-            />
-          </div>
-          <div className="form-control mt-8">
-            <button className="btn bg-black text-white border-none hover:bg-slate-800">
-              Get Started
-            </button>
-          </div>
-        </form>
+
+          <form onSubmit={handelOnSubmit} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-lg">Email</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                className="input input-bordered bg-transparent md:input-lg"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text  text-lg">Password</span>
+              </label>
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                className="input input-bordered md:input-lg bg-transparent"
+                required
+              />
+            </div>
+            <div className="form-control mt-8">
+              <button className="btn bg-black text-white border-none hover:bg-slate-800 md:btn-lg">
+                Get Started
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
