@@ -26,7 +26,7 @@ const RootLayout = () => {
   };
 
   return (
-    <div className="font-interFont">
+    <div className="font-interFont ">
       <div className="drawer lg:drawer-open ">
         <input
           id="my-drawer-2"
@@ -47,24 +47,26 @@ const RootLayout = () => {
           <label
             htmlFor="my-drawer-2"
             aria-label="close sidebar"
-            className="drawer-overlay"
+            className="drawer-overlay "
           ></label>
-          <ul className="menu bg-white text-base-content min-h-full w-80 p-4 overflow-hidden">
+          <ul className="menu bg-white text-base-content min-h-full w-80 p-0">
             {/* Sidebar content here */}
 
-            <div className="flex justify-between items-center mt-1">
-              <h1 className="font-tekoFont text-3xl">Black Pearl</h1>
-              <label
-                htmlFor="my-drawer-2"
-                className="border hover:border-blue-500 cursor-pointer rounded lg:hidden hover:text-blue-500 p-2  duration-300"
-              >
-                <IoClose className="text-xl " />
-              </label>
+            <div className="sticky top-0 bg-white z-10 pt-5 px-5">
+              <div className="flex justify-between items-center ">
+                <h1 className="font-tekoFont text-3xl">Black Pearl</h1>
+                <label
+                  htmlFor="my-drawer-2"
+                  className="border hover:border-blue-500 cursor-pointer rounded lg:hidden hover:text-blue-500 p-2  duration-300"
+                >
+                  <IoClose className="text-xl " />
+                </label>
+              </div>
+
+              <hr className="mt-4 -mx-4" />
             </div>
 
-            <hr className="my-4 -mx-4" />
-
-            <div>
+            <div className="p-5">
               <h2 className="uppercase font-semibold text-gray-400 text-xs mb-3">
                 All Pages
               </h2>
