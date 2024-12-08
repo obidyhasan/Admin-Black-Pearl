@@ -27,7 +27,7 @@ const RootLayout = () => {
 
   return (
     <div className="font-interFont ">
-      <div className="drawer lg:drawer-open ">
+      <div className="drawer lg:drawer-open h-screen">
         <input
           id="my-drawer-2"
           type="checkbox"
@@ -47,7 +47,7 @@ const RootLayout = () => {
           <label
             htmlFor="my-drawer-2"
             aria-label="close sidebar"
-            className="drawer-overlay "
+            className="drawer-overlay h-full"
           ></label>
           <ul className="menu bg-white text-base-content min-h-full w-80 p-0">
             {/* Sidebar content here */}
@@ -56,7 +56,7 @@ const RootLayout = () => {
               <div className="flex justify-between items-center ">
                 <h1 className="font-tekoFont text-3xl">Black Pearl</h1>
                 <label
-                  htmlFor="my-drawer-2"
+                  onClick={closeDrawer}
                   className="border hover:border-blue-500 cursor-pointer rounded lg:hidden hover:text-blue-500 p-2  duration-300"
                 >
                   <IoClose className="text-xl " />
