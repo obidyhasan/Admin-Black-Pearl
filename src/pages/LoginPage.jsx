@@ -44,16 +44,16 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="w-full min-h-screen grid grid-cols-1 md:grid-cols-2">
-      <div className="w-full h-full bg-[#ffedb1] flex items-center justify-center">
+    <div className="w-full min-h-screen flex flex-col md:flex-row">
+      <div className="w-full md:w-3/5  flex max-h-screen  items-center justify-center">
         <img
-          src="https://i.ibb.co.com/6y2J87S/12143602-4905058.jpg"
-          className="w-full max-h-screen object-contain"
+          src="https://i.ibb.co.com/KsKkbkY/aaecc0ed-f3e2-4d05-9d75-47b13b4b258d-transformed.jpg"
+          className="w-full h-full object-cover"
           alt=""
         />
       </div>
 
-      <div className="bg-[#fffcef] flex justify-center items-center">
+      <div className="w-full md:w-2/5 bg-purple-50 flex justify-center items-center">
         <div className="w-full max-w-lg">
           <div className="text-center mt-10">
             <h1 className="font-tekoFont text-4xl md:text-6xl">Black Pearl</h1>

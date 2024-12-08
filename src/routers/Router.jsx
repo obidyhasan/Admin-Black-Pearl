@@ -18,6 +18,20 @@ const Router = () => {
         {
           path: "/",
           element: <HomePage></HomePage>,
+          children: [
+            {
+              path: "/",
+              element: <h1>Dashboard</h1>,
+            },
+            {
+              path: "/addProduct",
+              element: <h1>Add Product</h1>,
+            },
+            {
+              path: "/productList",
+              element: <h1>Product List</h1>,
+            },
+          ],
         },
       ],
     },

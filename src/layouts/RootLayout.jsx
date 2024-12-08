@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { IoClose } from "react-icons/io5";
 import { AuthContext } from "../providers/AuthProvider";
 import LoadingLayout from "./LoadingLayout";
@@ -13,14 +13,27 @@ import { LuImage } from "react-icons/lu";
 
 const RootLayout = () => {
   const { loading } = useContext(AuthContext);
+  const drawerToggleRef = useRef(null);
   if (loading) {
     return <LoadingLayout></LoadingLayout>;
   }
 
+  // Close the drawer programmatically
+  const closeDrawer = () => {
+    if (window.innerWidth < 1024) {
+      drawerToggleRef.current.checked = false; // Uncheck the drawer toggle
+    }
+  };
+
   return (
     <div className="font-interFont">
-      <div className="drawer lg:drawer-open">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer lg:drawer-open ">
+        <input
+          id="my-drawer-2"
+          type="checkbox"
+          className="drawer-toggle"
+          ref={drawerToggleRef}
+        />
         <div className="drawer-content ">
           {/* Page content here */}
 
@@ -70,17 +83,44 @@ const RootLayout = () => {
                     <h2 className="font-semibold text-base ">Dashboard</h2>
                   </div>
                   <div className="collapse-content flex flex-col ">
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      to={"/"}
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Home 01</h1>
                     </NavLink>
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      to={"/home02"}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
-                      <h1>Home 01</h1>
+                      <h1>Home 02</h1>
                     </NavLink>
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      to={"/home03"}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
-                      <h1>Home 01</h1>
+                      <h1>Home 03</h1>
                     </NavLink>
                   </div>
                 </div>
@@ -90,14 +130,32 @@ const RootLayout = () => {
                   <input type="radio" name="my-accordion-2" className="peer" />
                   <div className=" collapse-title peer-checked:border-none border border-gray-100 flex rounded-md items-center gap-3 peer-checked:bg-blue-100 peer-checked:text-blue-500 mb-2">
                     <FiShoppingCart className="text-xl " />
-                    <h2 className="font-semibold text-base ">Ecommerce</h2>
+                    <h1 className="font-semibold text-base ">Ecommerce</h1>
                   </div>
                   <div className="collapse-content flex flex-col ">
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      to={"/addProduct"}
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Add Product</h1>
                     </NavLink>
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      to={"/productList"}
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Product List</h1>
                     </NavLink>
@@ -112,11 +170,27 @@ const RootLayout = () => {
                     <h2 className="font-semibold text-base ">Category</h2>
                   </div>
                   <div className="collapse-content flex flex-col ">
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Add Category</h1>
                     </NavLink>
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Category List</h1>
                     </NavLink>
@@ -131,11 +205,27 @@ const RootLayout = () => {
                     <h2 className="font-semibold text-base ">Attributes</h2>
                   </div>
                   <div className="collapse-content flex flex-col ">
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Add Category</h1>
                     </NavLink>
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Category List</h1>
                     </NavLink>
@@ -150,11 +240,27 @@ const RootLayout = () => {
                     <h2 className="font-semibold text-base ">Order</h2>
                   </div>
                   <div className="collapse-content flex flex-col ">
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Order List</h1>
                     </NavLink>
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Order Tracking</h1>
                     </NavLink>
@@ -169,7 +275,15 @@ const RootLayout = () => {
                     <h2 className="font-semibold text-base ">User</h2>
                   </div>
                   <div className="collapse-content flex flex-col ">
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>All User</h1>
                     </NavLink>
@@ -184,11 +298,27 @@ const RootLayout = () => {
                     <h2 className="font-semibold text-base ">Gallery</h2>
                   </div>
                   <div className="collapse-content flex flex-col ">
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Add Photo</h1>
                     </NavLink>
-                    <NavLink className="flex items-center justify-start text-sm p-2 gap-2 font-medium hover:text-blue-500 transform hover:translate-x-2 duration-300">
+                    <NavLink
+                      onClick={closeDrawer}
+                      className={({ isActive }) =>
+                        `flex items-center justify-start text-sm p-2 gap-2 font-medium 
+                       hover:text-blue-400 transform hover:translate-x-2 duration-300 ${
+                         isActive ? "text-blue-500 underline" : ""
+                       }`
+                      }
+                    >
                       <VscDebugBreakpointLogUnverified />
                       <h1>Order Tracking</h1>
                     </NavLink>
