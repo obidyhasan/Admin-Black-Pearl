@@ -27,7 +27,7 @@ const RootLayout = () => {
 
   return (
     <div className="font-interFont ">
-      <div className="drawer lg:drawer-open h-screen">
+      <div className="drawer lg:drawer-open min-h-screen">
         <input
           id="my-drawer-2"
           type="checkbox"
